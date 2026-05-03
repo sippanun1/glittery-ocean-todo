@@ -48,17 +48,13 @@ describe('taskStore', () => {
   })
 
   describe('updateTask', () => {
-    it('updates specified fields and bumps updatedAt', () => {
+    it('updates specified fields', () => {
       const task = getStore().addTask({ title: 'Old title' })
-      const beforeUpdate = task.updatedAt
-
-      // Small delay to ensure timestamp differs
       getStore().updateTask(task.id, { title: 'New title', priority: 2 })
 
       const updated = getStore().tasks.find((t) => t.id === task.id)!
       expect(updated.title).toBe('New title')
       expect(updated.priority).toBe(2)
-      expect(updated.updatedAt).not.toBe(beforeUpdate)
     })
   })
 

@@ -38,7 +38,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
 The app is interactive: tasks can be added (with NLP parsing), completed, deleted, reordered, and moved between Kanban columns. Today/Inbox/Upcoming views, fuzzy search, and the Glittery Ocean visual theme are all working.
 
-**Remaining work (Steps 8–10):** keyboard shortcuts (`useKeyboardShortcuts.ts`), undo toast (`UndoToast`), `KeyboardHelpModal`, final QA pass, and CLAUDE.md update.
+**MVP complete.** All 10 build steps done. 43 tests passing. Clean production build.
 
 ## Commands
 

@@ -6,6 +6,30 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Glittery Ocean** — a daily to-do list web app with a dark bioluminescent ocean aesthetic. Research and feature recommendations are in `rec_report.md`, which serves as the product spec.
 
+## Git Workflow
+
+Commit and push to GitHub after every meaningful unit of work — a completed component, a new feature, a config change, a bug fix. Never leave the repo in a state where local work could be lost.
+
+**Rules:**
+- Commit to `main` with a clean, descriptive message that explains *why*, not just *what*
+- Always `git push origin main` after committing
+- Stage specific files by name — never `git add .` or `git add -A`
+- Each commit should leave the app in a working (or at minimum non-broken) state
+- Co-author line on every commit: `Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>`
+
+**Commit message format:**
+```
+Short imperative summary (50 chars max)
+
+Optional body explaining context or decisions if non-obvious.
+
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+```
+
+**Remote:** https://github.com/sippanun1/glittery-ocean-todo (`origin/main`)
+
+---
+
 ## Status
 
 Pre-scaffolded. Run the following to initialize the project before anything else:

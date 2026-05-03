@@ -4,14 +4,23 @@ export default function OceanBackground() {
   const visible = usePageVisibility()
 
   return (
-    <div
-      className="fixed inset-0 -z-10 pointer-events-none"
-      style={{
-        background: 'radial-gradient(ellipse at 20% 50%, #0d1f3c 0%, #0a0e1a 50%, #060810 100%)',
-        backgroundSize: '200% 200%',
-        animation: visible ? 'oceanBreathe 8s ease-in-out infinite' : 'none',
-      }}
-    >
+    <div className="fixed inset-0 -z-10 pointer-events-none" style={{ background: '#0a0e1a' }}>
+      {/* Static base gradient */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse at 20% 50%, #0d1f3c 0%, #0a0e1a 50%, #060810 100%)',
+        }}
+      />
+      {/* Breathing overlay — opacity animation is GPU-composited (no repaint) */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse at 70% 30%, #0d2a4a 0%, transparent 60%)',
+          animation: visible ? 'oceanBreathe 8s ease-in-out infinite' : 'none',
+          willChange: visible ? 'opacity' : 'auto',
+        }}
+      />
       {/* Bioluminescent glow accent top-right */}
       <div
         className="absolute top-0 right-0 w-96 h-96 pointer-events-none"

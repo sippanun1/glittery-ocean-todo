@@ -1,8 +1,10 @@
+import { lazy, Suspense } from 'react'
 import AppShell from './components/layout/AppShell'
 import TaskView from './components/views/TaskView'
 import UndoToast from './components/ui/UndoToast'
-import KeyboardHelpModal from './components/ui/KeyboardHelpModal'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
+
+const KeyboardHelpModal = lazy(() => import('./components/ui/KeyboardHelpModal'))
 
 function AppContent() {
   useKeyboardShortcuts()
@@ -12,7 +14,9 @@ function AppContent() {
         <TaskView />
       </AppShell>
       <UndoToast />
-      <KeyboardHelpModal />
+      <Suspense fallback={null}>
+        <KeyboardHelpModal />
+      </Suspense>
     </>
   )
 }

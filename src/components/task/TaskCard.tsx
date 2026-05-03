@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { format, parseISO } from 'date-fns'
 import { GripVertical, Calendar } from 'lucide-react'
 import { clsx } from 'clsx'
 import { useTaskStore } from '../../store/taskStore'
 import { useUIStore } from '../../store/uiStore'
 import { PriorityBadge, LabelBadge } from '../ui/Badge'
-import TaskCompletionBurst from './TaskCompletionBurst'
 import type { Task } from '../../types/task'
+
+const TaskCompletionBurst = lazy(() => import('./TaskCompletionBurst'))
 
 const glowClass: Record<number, string> = {
   1: 'shadow-glow-p1 border-ocean-p1/30',
@@ -55,7 +56,9 @@ export default function TaskCard({ task, dragHandleProps, isDragging, onEdit }: 
         task.completed && 'opacity-50'
       )}
     >
-      <TaskCompletionBurst show={showBurst} onDone={() => setShowBurst(false)} />
+      <Suspense fallback={null}>
+        <TaskCompletionBurst show={showBurst} onDone={() => setShowBurst(false)} />
+      </Suspense>
 
       {/* Drag handle */}
       <button

@@ -1,11 +1,10 @@
 import AppShell from './components/layout/AppShell'
+import TaskView from './components/views/TaskView'
 
 export default function App() {
   return (
     <AppShell>
-      <div className="flex items-center justify-center h-full text-ocean-text-disabled text-sm">
-        Tasks coming soon…
-      </div>
+      <TaskView />
     </AppShell>
   )
 }
